@@ -1,6 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const Shape = require("./lib/shapes.js");
+const shape = require("./lib/shapes.js");
 
 // Inquirer questions
 const questions = [
@@ -33,7 +33,7 @@ function writeToFile(fileName, data) {
         if (err) {
             console.log("Something went wrong. ", err);
         } else {
-            console.log(`Generated ${response.text}-logo.svg`);
+            console.log(`Generated ${fileName}`);
         }
     });
 }
@@ -41,14 +41,30 @@ function writeToFile(fileName, data) {
 // Initialize the app, set Project Title as the filename
 function init() {
     inquirer.prompt(questions).then((response) => {
-        const createLogo = new Shape(
-            response.text,
-            response.textColor,
-            response.shape,
-            response.shapeColor
-        );
         const filePath = `./examples/${response.text}-logo.svg`;
-        writeToFile(filePath, createLogo.render());
+
+        if (response.shape == "circle") {
+            const createLogo = new shape.Circle(
+                response.text,
+                response.textColor,
+                response.shapeColor
+            );
+            writeToFile(filePath, createLogo.render());
+        } else if (response.shape == "square") {
+            const createLogo = new shape.Square(
+                response.text,
+                response.textColor,
+                response.shapeColor
+            );
+            writeToFile(filePath, createLogo.render());
+        } else if (response.shape == "triangle") {
+            const createLogo = new shape.Triangle(
+                response.text,
+                response.textColor,
+                response.shapeColor
+            );
+            writeToFile(filePath, createLogo.render());
+        }
     });
 }
 init();
