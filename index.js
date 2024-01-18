@@ -1,3 +1,4 @@
+// Import file system, inquirer, and the shapes objects
 const fs = require("fs");
 const inquirer = require("inquirer");
 const shape = require("./lib/shapes.js");
@@ -43,6 +44,7 @@ function init() {
     inquirer.prompt(questions).then((response) => {
         const filePath = `./examples/${response.text}-logo.svg`;
 
+        // Use Circle object if circle is selected
         if (response.shape == "circle") {
             const createLogo = new shape.Circle(
                 response.text,
@@ -50,6 +52,7 @@ function init() {
                 response.shapeColor
             );
             writeToFile(filePath, createLogo.render());
+            // Use Square object if square is selected
         } else if (response.shape == "square") {
             const createLogo = new shape.Square(
                 response.text,
@@ -57,6 +60,7 @@ function init() {
                 response.shapeColor
             );
             writeToFile(filePath, createLogo.render());
+            // Use Triangle object if Triangle is selected
         } else if (response.shape == "triangle") {
             const createLogo = new shape.Triangle(
                 response.text,
