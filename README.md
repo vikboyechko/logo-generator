@@ -8,7 +8,7 @@ In addition to the app itself, there are Jest tests that ensure the code passes 
 
 Finally, I used Object Oriented Programming (OOP) to create a Shape object with the SVG render template, which then allows each new shape to inherit the basic shape properties and dynamically add their specific SVG instructions to the render.
 
-[See the video demo of the SVG Logo generator](#)
+[See the video demo of the SVG Logo generator](https://app.screencastify.com/v3/watch/WpkgRTV0CUNXAaGkAE2q)
 
 ## Installation Instructions
 
